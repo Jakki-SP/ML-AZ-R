@@ -1,0 +1,24 @@
+---
+title: "missing_data_R"
+output:
+  pdf_document: default
+  html_document:
+    df_print: paged
+---
+
+```{r}
+dataset = read.csv(file='Data.csv')
+dataset
+```
+```{r}
+dataset$Age = ifelse(is.na(dataset$Age),
+                     ave(dataset$Age, FUN = function(x) mean(x,na.rm = TRUE)),
+                     dataset$Age)
+dataset
+```
+```{r}
+dataset$Salary = ifelse(is.na(dataset$Salary),
+                     ave(dataset$Salary, FUN = function(x) mean(x,na.rm= TRUE)),
+                     dataset$Salary)
+dataset
+```
